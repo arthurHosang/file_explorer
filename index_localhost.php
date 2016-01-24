@@ -32,7 +32,7 @@
         <div class="col-md-7 col-sm-offset-1">
             <div class="list-group">
                 <?php
-                header("Location: file_explorer/index.php");
+                header("Location: file_explorer/index.html");
                 ?>
             </div>
         </div>

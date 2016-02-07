@@ -43,6 +43,7 @@ function exibeVetor($array)
             $classe = $array[$i]['classe'];
             $apelido = $array[$i]['projeto'];
             $descricao = $caminho;
+            $irPara = $caminho;
         }
 
         echo "<a href='{$irPara}' class='list-group-item'>";

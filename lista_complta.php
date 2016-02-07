@@ -1,28 +1,71 @@
 <?php
 
-function ordenaMatriz($arrayArquivos, $coluna)
+function ordenaMatriz($arrayPastas, $coluna)
 {
-    $temp = $arrayArquivos[0];
-    for ($i = 0; $i < count($arrayArquivos); $i++) {
-        for ($j = 0; $j <= count($arrayArquivos); $j++) {
-            if ($arrayArquivos[$i][$coluna] < $arrayArquivos[$j][$coluna]) {
-                $temp = $arrayArquivos[$i];
-                $arrayArquivos[$i] = $arrayArquivos[$j];
-                $arrayArquivos[$j] = $temp;
+    $temp = $arrayPastas[0];
+    for ($i = 0; $i < count($arrayPastas); $i++) {
+        for ($j = 0; $j <= count($arrayPastas); $j++) {
+            if ($arrayPastas[$i][$coluna] < $arrayPastas[$j][$coluna]) {
+                $temp = $arrayPastas[$i];
+                $arrayPastas[$i] = $arrayPastas[$j];
+                $arrayPastas[$j] = $temp;
             }
         }
     }
-    return $arrayArquivos;
+    return $arrayPastas;
 }
 
-function exibePastas($arrayArquivos)
+function exibeVetor($array)
 {
-    for ($i = 0; $i < count($arrayArquivos); $i++) {
-        echo "<a href='{$arrayArquivos[$i]['caminho']}' class='list-group-item'>";
-        echo "<h4 class='list-group-item-heading'><span class='glyphicon {$arrayArquivos[$i]['classe']}'></span> {$arrayArquivos[$i]['projeto']}</h4>";
-        echo "<p class='list-group-item-text'>Lorem ipsum</p>";
+    echo "<div class='list-group'>";
+
+    $caminho = "";
+    $classe = "";
+    $$apelido = "";
+    $descricao = "";
+
+    for ($i = 0; $i < count($array); $i++) {
+        $projeto = getInfo($array[$i]['caminho']);
+
+        if ($projeto != null) {
+            $caminho = $array[$i]['caminho'];
+            $classe = $projeto->classe;
+            $apelido = $projeto->nome;
+            $descricao = $projeto->descricao;
+        } else {
+            $caminho = $array[$i]['caminho'];
+            $classe = $array[$i]['classe'];
+            $apelido = $array[$i]['projeto'];
+            $descricao = $caminho;
+        }
+
+        echo "<a href='{$caminho}' class='list-group-item'>";
+        echo "<h4 class='list-group-item-heading'><span class='glyphicon {$classe}'></span>&nbsp;{$apelido}</h4>";
+            echo "<p class='list-group-item-text'>" .$descricao. "</p>";
         echo "</a>";
     }
+
+    echo "</div>";
+}
+
+
+function getInfo($caminho)
+{
+    $arquivo2 = "config.json";
+
+    $info = file_get_contents($arquivo2);
+
+    $lendo = json_decode($info);
+
+    $retorno = null;
+
+    foreach ($lendo->projetos as $campo) {
+        if ($campo->caminho == $caminho) {
+            $retorno = $campo;
+        }
+    }
+
+    return $retorno;
 }
 
 ?>
@@ -32,6 +75,7 @@ function exibePastas($arrayArquivos)
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lista Completa de Projetos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Bootstrap 101 Template</title>
@@ -49,50 +93,55 @@ function exibePastas($arrayArquivos)
 <body>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-11 col-sm-offset-1">
-            <br>
-            <h1>Lista de Projetos</h1>
-            <br>
-        </div>
-    </div>
-    <div class="row">
+    <?php
 
-        <div class="col-md-7 col-sm-offset-1">
-            <div class="list-group">
+    $pasta = '../';
 
-                <?php
+    $array_diretorios_ignorar = array('..', '.', '.idea', 'launcher0');
+    $arrayPastas = array();
+    $arrayArquivos = array();
 
-                $pasta = '../';
-
-                $array_diretorios_ignorar = array('..', '.', '.idea', 'launcher0');
-                $arrayPastas = array();
-
-                if (is_dir($pasta)) {
-                    $diretorio = dir($pasta);
-                    $count = -1;
-                    while ($arquivo = $diretorio->read()) {
-                        if (!is_file($arquivo)) {
-                            if ($arquivo != '..' && $arquivo != '.' && $arquivo != '.idea' && $arquivo != 'launcher0' && $arquivo != '_index.html') {
-                                $count++;
-                                $arrayArquivos[$count]['projeto'] = $arquivo;
-                                $arrayArquivos[$count]['caminho'] = $pasta . $arquivo;
-                                $arrayArquivos[$count]['classe'] = " glyphicon-asterisk";
-                            }
-                        }
+    if (is_dir($pasta)) {
+        $diretorio = dir($pasta);
+        $countPastas = -1;
+        $countArquivos = -1;
+        while ($arquivo = $diretorio->read()) {
+            if ($arquivo != "launcher0" && $arquivo != "index.php") {
+                if (!is_file($arquivo) && !(strpos($arquivo, ".") > -1)) {
+                    $countPastas++;
+                    $arrayPastas[$countPastas]['projeto'] = $arquivo;
+                    $arrayPastas[$countPastas]['caminho'] = $pasta . $arquivo;
+                    $arrayPastas[$countPastas]['classe'] = " glyphicon-briefcase ";
+                } else {
+                    if (!is_dir($arquivo)) {
+                        $countArquivos++;
+                        $arrayArquivos[$countArquivos]['projeto'] = $arquivo;
+                        $arrayArquivos[$countArquivos]['caminho'] = $pasta . $arquivo;
+                        $arrayArquivos[$countArquivos]['classe'] = " glyphicon-file ";
                     }
-                    $diretorio->close();
                 }
+            }
+        }
+        $diretorio->close();
+    }
 
-                $arrayArquivos = ordenaMatriz($arrayArquivos, 'projeto');
+    $arrayPastas = ordenaMatriz($arrayPastas, 'projeto');
+    $countArquivos = ordenaMatriz($countArquivos, 'projeto');
 
-                exibePastas($arrayArquivos);
-                ?>
-            </div>
-        </div>
-    </div>
+
+    echo "<div class='row'>";
+    echo "<div class='col-md-5 col-sm-offset-1'>";
+    echo "<br><h1>Meus Projetos</h1>";
+    exibeVetor($arrayPastas);
+    echo "</div>";
+
+    echo "<div class='col-md-5'>";
+    echo "<br><h1>Meus Arquivos</h1>";
+    exibeVetor($arrayArquivos);
+    echo "</div>";
+    echo "</div>";
+    ?>
 </div>
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="_lib/jquerry/jquery.min.js"></script>

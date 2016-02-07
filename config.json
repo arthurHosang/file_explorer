@@ -1,38 +1,10 @@
 {"projetos":[
 
   {
-    "caminho": "../contato",
+    "caminho": "../teste",
     "nome": "Contatos",
     "descricao": "Sistema Gerenciador de Contatos",
-    "classe": "glyphicon-user"
-  },
-
-  {
-    "caminho": "../demolaysc_php",
-    "nome": "Protal DeMolay",
-    "descricao": "Novo portal do GCE/SC",
-    "classe": "glyphicon-globe"
-  },
-
-  {
-    "caminho": "../teste_php.html",
-    "nome": "Arquivo de Informações do PHP",
-    "descricao": "Arquivo de Informações PHP",
-    "classe": "glyphicon-wrench"
-  },
-
-  {
-    "caminho": "../contatooh",
-    "nome": "CHC Labs - Contatooh",
-    "descricao": "Tutorial do livro Mean Stack",
-    "classe": "glyphicon-baby-formula"
-  },
-
-  {
-    "caminho": "../file_explorer",
-    "nome": "Explorador de Projetos",
-    "descricao": "Explicardor de Projetos",
-    "classe": "glyphicon-search"
+    "classe": "glyphicon-user",
+    "redirecionarPara": "../teste/_frontend"
   }
-
 ]}

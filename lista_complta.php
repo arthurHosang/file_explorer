@@ -21,8 +21,9 @@ function exibeVetor($array)
 
     $caminho = "";
     $classe = "";
-    $$apelido = "";
+    $apelido = "";
     $descricao = "";
+    $irPara = "";
 
     for ($i = 0; $i < count($array); $i++) {
         $projeto = getInfo($array[$i]['caminho']);
@@ -32,6 +33,11 @@ function exibeVetor($array)
             $classe = $projeto->classe;
             $apelido = $projeto->nome;
             $descricao = $projeto->descricao;
+            if ($projeto->redirecionarPara == null){
+                $irPara = $caminho;
+            } else {
+                $irPara = $projeto->redirecionarPara;
+            }
         } else {
             $caminho = $array[$i]['caminho'];
             $classe = $array[$i]['classe'];
@@ -39,7 +45,7 @@ function exibeVetor($array)
             $descricao = $caminho;
         }
 
-        echo "<a href='{$caminho}' class='list-group-item'>";
+        echo "<a href='{$irPara}' class='list-group-item'>";
         echo "<h4 class='list-group-item-heading'><span class='glyphicon {$classe}'></span>&nbsp;{$apelido}</h4>";
             echo "<p class='list-group-item-text'>" .$descricao. "</p>";
         echo "</a>";

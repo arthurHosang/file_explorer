@@ -4,7 +4,7 @@ function ordenaMatriz($arrayPastas, $coluna)
 {
     $temp = $arrayPastas[0];
     for ($i = 0; $i < count($arrayPastas); $i++) {
-        for ($j = 0; $j <= count($arrayPastas); $j++) {
+        for ($j = 0; $j < count($arrayPastas); $j++) {
             if ($arrayPastas[$i][$coluna] < $arrayPastas[$j][$coluna]) {
                 $temp = $arrayPastas[$i];
                 $arrayPastas[$i] = $arrayPastas[$j];

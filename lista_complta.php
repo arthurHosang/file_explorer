@@ -30,14 +30,10 @@ function exibeVetor($array)
 
         if ($projeto != null) {
             $caminho = $array[$i]['caminho'];
-            $classe = $projeto->classe;
-            $apelido = $projeto->nome;
-            $descricao = $projeto->descricao;
-            if ($projeto->redirecionarPara == null){
-                $irPara = $caminho;
-            } else {
-                $irPara = $projeto->redirecionarPara;
-            }
+            $classe = property_exists($projeto, "classe") ? $projeto->classe : $array[$i]['classe'];
+            $apelido = property_exists($projeto, "nome") ? $projeto->nome : ucwords(str_replace("_", " ", $array[$i]['projeto']));
+            $descricao = property_exists($projeto, "descricao") ? $projeto->descricao : $caminho;
+            $irPara = property_exists($projeto, "redirecionarPara") ? $projeto->redirecionarPara : $caminho;
         } else {
             $caminho = $array[$i]['caminho'];
             $classe = $array[$i]['classe'];
@@ -48,7 +44,7 @@ function exibeVetor($array)
 
         echo "<a href='{$irPara}' class='list-group-item'>";
         echo "<h4 class='list-group-item-heading'><span class='glyphicon {$classe}'></span>&nbsp;{$apelido}</h4>";
-            echo "<p class='list-group-item-text'>" .$descricao. "</p>";
+        echo "<p class='list-group-item-text'>" .$descricao. "</p>";
         echo "</a>";
     }
 

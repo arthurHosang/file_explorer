@@ -37,7 +37,7 @@ function exibeVetor($array)
         } else {
             $caminho = $array[$i]['caminho'];
             $classe = $array[$i]['classe'];
-            $apelido = ucwords(str_replace("_", " ", $array[$i]['projeto']));
+            $apelido = ucwords(str_replace("_", " ", str_replace("-", " ", $array[$i]['projeto'])));
             $descricao = $caminho;
             $irPara = $caminho;
         }

@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="javascript:$('.list-group').collapse('hide')">Ocultar tudo</a></li>
+                <li><a href="javascript:$('.list-group').collapse('toggle')">Ocultar tudo</a></li>
 <!--                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
 <!--                <li><a href='../../'>Gerenciador de Arquivos</a></li>-->
 <!--                <li class="dropdown">-->
@@ -37,7 +37,7 @@
 <!--                <button type="submit" class="btn btn-default">Submit</button>-->
 <!--            </form>-->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Configurar</a></li>
+                <li><a href="javascript:alert('Putz, ainda não fizemos essa parte :/');">Configurar</a></li>
 <!--                <li class="dropdown">-->
 <!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
 <!--                    <ul class="dropdown-menu">-->

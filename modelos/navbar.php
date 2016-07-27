@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo $_SERVER['REQUEST_URI'] ?>">Gerenciador de Projetos</a>
+            <a class="navbar-brand" href="javascript:location.reload();">Gerenciador de Projetos</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

@@ -87,7 +87,7 @@ $array = $p->getArquivos();
 
                 <div class="col-md-6">
                     <h1 class="cursor-pointer" onclick="$(this).parent().find('.list-group').collapse('toggle')">Arquivos</h1>
-                    <div class="list-group collapse">
+                    <div class="list-group collapse in">
                         <?php
                         echo $p->getVisualizacao('arquivo');
                         ?>

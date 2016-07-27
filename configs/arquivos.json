@@ -1,0 +1,11 @@
+{"projetos":[
+
+  {
+    "caminho": "/nome_pasta",
+    "nome": "Título para o Projeto",
+    "descricao": "Descrição do Seu Projeto",
+    "classe": "glyphicon-user",
+    "redirecionarPara": "../nome_pasta/index.html",
+    "tipo": "projeto"
+  }
+]}

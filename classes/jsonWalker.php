@@ -8,7 +8,7 @@
  */
 class jsonWalker
 {
-    private $caminhoJSon = 'config.json';
+    private $caminhoJSon;
     private $item;
 
     /**
@@ -17,13 +17,21 @@ class jsonWalker
      */
     public function __construct($caminho)
     {
+        if(file_exists('configs_usuario/arquivos.json')){
+            $this->caminhoJSon ='configs_usuario/arquivos.json';
+        } else {
+            if(file_exists('configs/arquivos.json')){
+                $this->caminhoJSon ='configs/arquivos.json';
+            }
+        }
+
         $this->item = $this->getInfo($caminho);
     }
 
 
     function getInfo($caminho)
     {
-        $arquivo2 = "config.json";
+        $arquivo2 = $this->caminhoJSon;
 
         $info = file_get_contents($arquivo2);
 

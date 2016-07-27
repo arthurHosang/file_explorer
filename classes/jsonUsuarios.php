@@ -8,7 +8,7 @@
  */
 class jsonUsuarios
 {
-    private $caminhoJSon = 'usuarios.json';
+    private $caminhoJSon;
     private $item;
 
     /**
@@ -17,12 +17,19 @@ class jsonUsuarios
      */
     public function __construct()
     {
+        if(file_exists('configs_usuario/usuarios.json')){
+            $this->caminhoJSon ='configs_usuario/usuarios.json';
+        } else {
+            if(file_exists('configs/usuarios.json')){
+                $this->caminhoJSon ='configs/usuarios.json';
+            }
+        }
     }
 
 
     function login($login, $senha)
     {
-        $arquivo2 = "usuarios.json";
+        $arquivo2 = $this->caminhoJSon;
 
         $info = file_get_contents($arquivo2);
 

@@ -1,10 +1,88 @@
 {"projetos":[
 
   {
-    "caminho": "../teste",
+    "caminho": "/contato",
     "nome": "Contatos",
     "descricao": "Sistema Gerenciador de Contatos",
     "classe": "glyphicon-user",
-    "redirecionarPara": "../teste/_frontend"
+    "redirecionarPara": "../contato/_frontend",
+    "tipo": "projeto"
+  },
+
+  {
+    "caminho": "/gocorrencias",
+    "nome": "Gerenciador de Ocorrências",
+    "descricao": "Sistema Gerenciador de Bugs e outras solicitações",
+    "classe": "glyphicon-record",
+    "redirecionarPara": "../gocorrencias",
+    "tipo": "projeto"
+  },
+
+  {
+    "caminho": "/demolaysc_php",
+    "nome": "Site GCE-SC",
+    "descricao": "Site do GCE-SC da Ordem DeMolay",
+    "classe": "glyphicon-flag",
+    "redirecionarPara": "../demolaysc_php",
+    "tipo": "projeto"
+  },
+
+  {
+    "caminho": "/file_explorer",
+    "nome": "File Explorer",
+    "descricao": "Sistema de Gerenciamento de Arquivos em PHP",
+    "classe": "glyphicon-folder-open",
+    "redirecionarPara": "../file_explorer",
+    "tipo": "outro"
+  },
+
+  {
+    "caminho": "/melonJS-master",
+    "nome": "Doc MelonJS",
+    "descricao": "Documentação da Biblioteca MelonJS",
+    "classe": "glyphicon-globe",
+    "redirecionarPara": "../melonJS-master",
+    "tipo": "outros"
+  },
+
+
+  {
+    "caminho": "/unify",
+    "nome": "Doc Unify",
+    "descricao": "Documentação da Biblioteca Unify",
+    "classe": "glyphicon-globe",
+    "redirecionarPara": "../unify",
+    "tipo": "biblioteca"
+  },
+
+
+  {
+    "caminho": "/tutorial-space-invaders",
+    "nome": "Tutorial Space Invaders - MelonJS",
+    "descricao": "Tutorial Space Invaders com a Bilioteca MelonJS",
+    "classe": "glyphicon-book",
+    "redirecionarPara": "../tutorial-space-invaders",
+    "tipo": "tutorial"
+  },
+
+
+  {
+    "caminho": "/amazoniaUnderAttack",
+    "nome": "Game Amazonia Under Attack",
+    "descricao": "Jogo Amazonia Under Attack",
+    "classe": "glyphicon-flash",
+    "redirecionarPara": "../amazoniaUnderAttack",
+    "tipo": "outro"
+  },
+
+
+  {
+    "caminho": "/test-invasores",
+    "nome": "Teste Invasores",
+    "descricao": "",
+    "classe": "glyphicon-flash",
+    "redirecionarPara": "../test-invasores",
+    "tipo": "outro"
   }
+
 ]}

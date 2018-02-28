@@ -54,7 +54,7 @@ function exibeVetor($array)
 
 function getInfo($caminho)
 {
-    $arquivo2 = "arquivos.json";
+    $arquivo2 = "configs/arquivos.json";
 
     $info = file_get_contents($arquivo2);
 
